@@ -11,9 +11,11 @@ try {
     console.log(core.getInput('team'));
     console.log(github.context.payload.repository.assignees_url);
 
-    https.get('https://api.github.com/repos/packbackbooks/questions/assignees', { json: true }, (err, res, body) => {
-        console.log(err, res, body);
-    });
+    https.get('https://api.github.com/repos/packbackbooks/questions/assignees',
+        { json: true, authorization: `Bearer ${ secrets.GITHUB_TOKEN }` },
+        (err, res, body) => {
+            console.log(err, res, body);
+        });
 } catch (error) {
     core.setFailed(error.message);
 }
