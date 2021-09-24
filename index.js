@@ -12,7 +12,7 @@ try {
     console.log(github.context.payload.repository.assignees_url);
 
     https.get('https://api.github.com/repos/packbackbooks/questions/assignees',
-        { json: true, authorization: `Bearer ${ secrets.GITHUB_TOKEN }` },
+        { json: true, authorization: `Bearer ${ github.token }` },
         (err, res, body) => {
             console.log(err, res, body);
         });
