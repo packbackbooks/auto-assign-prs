@@ -5,7 +5,7 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
-  derp:  # id of input
+  users:  # id of input
     description: 'Users'
     required: false
     default: 'woooo'
