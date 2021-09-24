@@ -8522,17 +8522,20 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(7153);
 const github = __nccwpck_require__(2078);
+const https = __nccwpck_require__(7211);
 
 try {
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-  console.log(core.getInput('team'));
-  console.log(github.context.payload.repository.assignees_url);
+    const time = (new Date()).toTimeString();
+    core.setOutput("time", time);
+    // Get the JSON webhook payload for the event that triggered the workflow
+    const payload = JSON.stringify(github, undefined, 2)
+    console.log(`The event payload: ${payload}`);
+    console.log(core.getInput('team'));
+    console.log(github.context.payload.repository.assignees_url);
+
+    console.log(JSON.stringify(https.get('https://api.github.com/repos/packbackbooks/questions/assignees')));
 } catch (error) {
-  core.setFailed(error.message);
+    core.setFailed(error.message);
 }
 })();
 
