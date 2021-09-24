@@ -8538,8 +8538,6 @@ try {
     //     (err, res, body) => {
     //         console.log(err, res, body);
     //     });
-    console.log(github.token);
-    console.log(JSON.stringify(secrets, undefined, 2));
     console.log(core.getInput('repo-token'));
 } catch (error) {
     core.setFailed(error.message);
