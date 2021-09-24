@@ -7,7 +7,7 @@ inputs:
     default: 'World'
   derp:  # id of input
     description: 'Users'
-    required: true
+    required: false
     default: 'woooo'
 outputs:
   time: # id of output
