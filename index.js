@@ -14,4 +14,4 @@ try {
   core.setFailed(error.message);
 }
 
-console.log(core.getInput('users'));
+console.log(core.getInput('derp'));
