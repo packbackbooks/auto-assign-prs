@@ -8533,12 +8533,14 @@ try {
     console.log(core.getInput('team'));
     console.log(github.context.payload.repository.assignees_url);
 
-    const token = core.getInput('repo-token');
-    https.get('https://api.github.com/repos/packbackbooks/questions/assignees',
-        { json: true, authorization: `Bearer ${ token }` },
-        (err, res, body) => {
-            console.log(err, res, body);
-        });
+    console.log(process.env);
+
+    // const token = core.getInput('repo-token');
+    // https.get('https://api.github.com/repos/packbackbooks/questions/assignees',
+    //     { json: true, authorization: `Bearer ${ token }` },
+    //     (err, res, body) => {
+    //         console.log(err, res, body);
+    //     });
 } catch (error) {
     core.setFailed(error.message);
 }
