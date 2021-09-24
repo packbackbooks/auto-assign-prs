@@ -3,6 +3,7 @@ const github = require('@actions/github');
 
 try {
   console.log(core.getInput('team'));
+  console.log(`https://api.github.com/repos/${ github.repository }/commits/${ github.event.review.commit_id }`);
 
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
