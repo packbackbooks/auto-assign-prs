@@ -8533,7 +8533,22 @@ try {
     console.log(core.getInput('team'));
     console.log(github.context.payload.repository.assignees_url);
 
-    console.log(JSON.stringify(https.get('https://api.github.com/repos/packbackbooks/questions/assignees')));
+    https.get('https://api.github.com/repos/packbackbooks/questions/assignees', (resp) => {
+        let data = '';
+
+        // A chunk of data has been received.
+        resp.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        // The whole response has been received. Print out the result.
+        resp.on('end', () => {
+            console.log(JSON.parse(data).explanation);
+        });
+
+    }).on("error", (err) => {
+        console.log("Error: " + err.message);
+    });
 } catch (error) {
     core.setFailed(error.message);
 }
