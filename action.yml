@@ -5,10 +5,10 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
-  users:  # id of input
+  derp:  # id of input
     description: 'Users'
     required: true
-    default: []
+    default: 'woooo'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
