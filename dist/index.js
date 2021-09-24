@@ -8524,16 +8524,13 @@ const core = __nccwpck_require__(7153);
 const github = __nccwpck_require__(2078);
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(nameToGreet);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github, undefined, 2)
   console.log(`The event payload: ${payload}`);
   console.log(core.getInput('team'));
-  console.log(`https://api.github.com/repos/${ github.repository }/commits/${ github.event.context.after }`);
+  console.log(github.context.payload.repository.assignees_url);
 } catch (error) {
   core.setFailed(error.message);
 }
