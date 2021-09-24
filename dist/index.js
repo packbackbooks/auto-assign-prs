@@ -8530,10 +8530,10 @@ try {
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  const payload = JSON.stringify(github, undefined, 2)
   console.log(`The event payload: ${payload}`);
   console.log(core.getInput('team'));
-  console.log(`https://api.github.com/repos/${ github.repository }/commits/${ github.event.review.commit_id }`);
+  console.log(`https://api.github.com/repos/${ github.repository }/commits/${ github.event.context.after }`);
 } catch (error) {
   core.setFailed(error.message);
 }
